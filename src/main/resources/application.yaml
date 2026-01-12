@@ -1,3 +1,26 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: veterinarias
+  datasource:
+    url: jdbc:postgresql://localhost:5432/app_veterinaria
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+  flyway:
+    enabled: true
+
+  logging:
+    level:
+      org.hibernate.SQL: debug
