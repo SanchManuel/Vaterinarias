@@ -1,5 +1,6 @@
-package com.systemReady.veterinarias.Domain;
+package com.systemReady.veterinarias.Domain.cliente;
 
+import com.systemReady.veterinarias.Domain.veterinaria.Veterinaria;
 import jakarta.persistence.*;
 import lombok.*;
 

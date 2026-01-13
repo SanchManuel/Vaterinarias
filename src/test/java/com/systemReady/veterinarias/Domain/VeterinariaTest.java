@@ -1,5 +1,6 @@
 package com.systemReady.veterinarias.Domain;
 
+import com.systemReady.veterinarias.Domain.veterinaria.Veterinaria;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
