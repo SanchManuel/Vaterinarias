@@ -26,7 +26,7 @@ create table citas(
     id bigserial primary key,
     veterinaria_id bigint not null references veterinarias(id),
     mascota_id bigint not null references mascotas(id),
-    veterinario_id not null  references veterinarios(id),
+    veterinario_id bigint not null  references veterinarios(id),
     fecha_hora timestamptz not null,
     estado varchar(100) not null,
     motivo text not null,
@@ -77,9 +77,9 @@ create table receta_item(
 
 create table medicamento_precio(
     id bigserial primary key,
-    medicamento_id not null references medicamento(id),
+    medicamento_id bigint not null references medicamento(id),
     precio decimal(16,2) NOT NULL DEFAULT 0.00,
-    moneda varchar(10) not null DEFAULT "MXN",
+    moneda varchar(10) not null DEFAULT 'MXN',
     vigencia_desde DATE not null,
     vigencia_hasta DATE not null,
     created_at timestamptz not null default now(),

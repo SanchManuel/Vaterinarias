@@ -3,6 +3,7 @@ create table veterinarias (
                               nombre varchar(150) not null,
                               telefono varchar(50) not null,
                               direccion text not null,
+                              activo boolean,
                               created_at timestamptz not null default now(),
                               updated_at timestamptz not null default now()
 );

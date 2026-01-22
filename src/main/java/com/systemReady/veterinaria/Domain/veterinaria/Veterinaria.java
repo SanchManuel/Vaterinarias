@@ -3,6 +3,8 @@ package com.systemReady.veterinaria.Domain.veterinaria;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.OffsetDateTime;
+
 @Entity
 @Table(name = "veterinarias")
 @Getter @Setter
@@ -22,4 +24,10 @@ public class Veterinaria {
 
     @Column(columnDefinition = "text")
     private String direccion;
+
+    @Column(nullable = false)
+    private Boolean activo = true;
+
+    @Column(name = "created_at", nullable = false)
+    private OffsetDateTime createdAt = OffsetDateTime.now();
 }

@@ -8,7 +8,6 @@ public record responseDTO(
         String nombre,
         String telefono,
         String email,
-        String direccion,
-        Boolean activa,
+        Boolean activo,
         OffsetDateTime createdAt
 ){}
