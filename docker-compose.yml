@@ -9,4 +9,4 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - "E:/data:/var/lib/postgresql/data"
+      - "/home/manuel/HDD/proyectos/veterinarias/data:/var/lib/postgresql/data"
