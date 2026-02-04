@@ -3,7 +3,7 @@ package com.systemReady.veterinaria.dto.veterinaria;
 
 import java.time.OffsetDateTime;
 
-public record responseDTO(
+public record VeterinariaResponse(
         Long id,
         String nombre,
         String telefono,

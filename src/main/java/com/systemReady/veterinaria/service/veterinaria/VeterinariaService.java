@@ -1,8 +1,8 @@
 package com.systemReady.veterinaria.service.veterinaria;
 import com.systemReady.veterinaria.Domain.veterinaria.Veterinaria;
-import com.systemReady.veterinaria.dto.veterinaria.CreateRequest;
-import com.systemReady.veterinaria.dto.veterinaria.UpdateRequest;
-import com.systemReady.veterinaria.dto.veterinaria.responseDTO;
+import com.systemReady.veterinaria.dto.veterinaria.VeterinariaCreateRequest;
+import com.systemReady.veterinaria.dto.veterinaria.VeterinariaUpdateRequest;
+import com.systemReady.veterinaria.dto.veterinaria.VeterinariaResponse;
 import com.systemReady.veterinaria.repository.VeterinariaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +16,7 @@ public class VeterinariaService {
         this.repository=repository;
     }
 
-    public responseDTO crear(CreateRequest request){
+    public VeterinariaResponse crear(VeterinariaCreateRequest request){
         Veterinaria veterinaria = new Veterinaria();
         veterinaria.setNombre(request.nombre());
         veterinaria.setTelefono(request.telefono());
@@ -25,19 +25,19 @@ public class VeterinariaService {
         return this.toResponse(this.repository.save(veterinaria));
     }
 
-    public Page<responseDTO> listar(Boolean activo, Pageable pageable){
+    public Page<VeterinariaResponse> listar(Boolean activo, Pageable pageable){
         if(activo == null){
             return this.repository.findAll(pageable).map(this::toResponse);
         }
         return this.repository.findByActivo(activo, pageable).map(this::toResponse);
     }
 
-    public responseDTO obtener(Long id){
+    public VeterinariaResponse obtener(Long id){
         Veterinaria veterinaria = this.getVeterinaria(id);
         return this.toResponse(veterinaria);
     }
 
-    public responseDTO actualizar(Long id, UpdateRequest request){
+    public VeterinariaResponse actualizar(Long id, VeterinariaUpdateRequest request){
         Veterinaria veterinaria = this.getVeterinaria(id);
         if(request.nombre() != null) veterinaria.setNombre(request.nombre());
         if(request.telefono() != null) veterinaria.setTelefono(request.telefono());
@@ -57,8 +57,8 @@ public class VeterinariaService {
         return this.repository.findById(id)
                 .orElseThrow(()->new RuntimeException("Veterinaria no encontradaa "+id));
     }
-    private responseDTO toResponse(Veterinaria veterinaria) {
-        return new responseDTO(
+    private VeterinariaResponse toResponse(Veterinaria veterinaria) {
+        return new VeterinariaResponse(
                 veterinaria.getId(),
                 veterinaria.getNombre(),
                 veterinaria.getTelefono(),

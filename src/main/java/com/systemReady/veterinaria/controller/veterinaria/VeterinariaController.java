@@ -1,8 +1,8 @@
 package com.systemReady.veterinaria.controller.veterinaria;
 
-import com.systemReady.veterinaria.dto.veterinaria.CreateRequest;
-import com.systemReady.veterinaria.dto.veterinaria.UpdateRequest;
-import com.systemReady.veterinaria.dto.veterinaria.responseDTO;
+import com.systemReady.veterinaria.dto.veterinaria.VeterinariaCreateRequest;
+import com.systemReady.veterinaria.dto.veterinaria.VeterinariaUpdateRequest;
+import com.systemReady.veterinaria.dto.veterinaria.VeterinariaResponse;
 import com.systemReady.veterinaria.service.veterinaria.VeterinariaService;
 import jakarta.validation.Valid;
 import org.springdoc.core.annotations.ParameterObject;
@@ -23,23 +23,22 @@ public class VeterinariaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public responseDTO crear(@RequestBody @Valid CreateRequest request){
+    public VeterinariaResponse crear(@RequestBody @Valid VeterinariaCreateRequest request){
         return this.service.crear(request);
     }
 
     @GetMapping("/{id}")
-    public responseDTO obtener(@PathVariable Long id){
+    public VeterinariaResponse obtener(@PathVariable Long id){
         return this.service.obtener(id);
     }
 
     @GetMapping
-    public Page<responseDTO> listar(@RequestParam(required = false) Boolean activo,  @ParameterObject Pageable pageable){
-        System.out.println("SORT = " + pageable.getSort());
+    public Page<VeterinariaResponse> listar(@RequestParam(required = false) Boolean activo, @ParameterObject Pageable pageable){
         return this.service.listar(activo,pageable);
     }
 
     @PatchMapping("/{id}")
-    public responseDTO actaulizar(@PathVariable Long id, @RequestBody @Valid UpdateRequest request){
+    public VeterinariaResponse actaulizar(@PathVariable Long id, @RequestBody @Valid VeterinariaUpdateRequest request){
         return this.service.actualizar(id,request);
     }
 
